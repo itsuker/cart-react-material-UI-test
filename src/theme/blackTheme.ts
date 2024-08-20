@@ -8,7 +8,7 @@ export const blackTheme = createTheme({
         }, 
         secondary: { 
         main: "#1E1E1E" 
-        }, 
+        },
         error: { 
         main: red.A400 
         }, 
