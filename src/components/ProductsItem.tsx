@@ -6,12 +6,10 @@ import { Product } from '../interfaces/productos'
 
 
 export const ProductsItem: React.FC<Product> = ({ id, title, thumbnail, description, price }) => {
-
   const hadleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     console.log('Button clicked');
   }
   return (
-
     <ListItem 
     key={id}
       sx={{
@@ -29,7 +27,9 @@ export const ProductsItem: React.FC<Product> = ({ id, title, thumbnail, descript
         margin: '10px',
         padding: '10px',
         backgroundColor: 'secondary.main',
-      }} >
+      }}
+      className='animate__animated animate__fadeIn animate__faster'
+      >
         <CardActionArea sx={{flex:1}}>
           <CardMedia
             component="img"

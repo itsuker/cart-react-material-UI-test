@@ -10,12 +10,7 @@ import { FilterProducts } from '../components/FilterProducts'
 export const Header = () => {
     return ( //<FilterProducts />
    <>
- 
-
         <FilterProducts  />
-   
-   
-   
    </>
        
 

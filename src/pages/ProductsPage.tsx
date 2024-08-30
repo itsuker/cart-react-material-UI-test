@@ -18,14 +18,12 @@ export const ProductsPage = () => {
     
       <Typography variant="h2" align="center">Products</Typography>
       <Cart/>
-      <main  >{/**className='products' */}
+      <main  >
         <ProductsLayout>
-          {/**<Header changeFilter={setFilters}   /> */}
           <Header    />
           <Products products={filteredProducts} />
           {/*esto ayuda para ver lo rendirezimas de los elementos */}
           <Footer  />
-          
         </ProductsLayout>
       </main>
     </>

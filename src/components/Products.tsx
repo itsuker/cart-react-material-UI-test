@@ -8,13 +8,8 @@ interface ProductsProps {
 
 export const Products:React.FC<ProductsProps> = ({products } ) => {
  const {products:productList} = products;
-
-
   return (
     <>
-    
-
-    
       <List sx={{
         display: 'grid',
         gridTemplateColumns: {

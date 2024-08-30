@@ -3,6 +3,7 @@ import {   Drawer, IconButton, Paper } from "@mui/material"
 import { useState } from "react"
 
 
+
 export const Cart = () => {
     const [open, setopen] = useState(false)
     const towgglerDrawer = (isOpen:boolean) => (  ) => {
@@ -14,14 +15,11 @@ export const Cart = () => {
        
         
     }
-    
-
 
     const drawerList =  (
        
         <Paper
-     
-     
+      
         sx={{ width: {
             xs:250,
             sm:300,
@@ -36,12 +34,16 @@ export const Cart = () => {
         role="presentation"
         onMouseLeave={towgglerDrawer(false)}
         >
+            {/** */}
+
             <h1>Cart</h1>
             <ul>
                 <li>Product 1</li>
                 <li>Product 2</li>
                 <li>Product 3</li>
             </ul>
+
+
         </Paper>
 
     )
@@ -70,7 +72,10 @@ export const Cart = () => {
 
         />
       </IconButton>
-        <Drawer anchor="right" open={open} onClose={towgglerDrawer(false)} 
+        <Drawer anchor="right" open={open} onClose={towgglerDrawer(false)  
+      
+        } 
+        className="animate__animated animate__fadeInTopRight  animate__medium"
         >
             {drawerList}
         </Drawer>
