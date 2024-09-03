@@ -76,8 +76,9 @@ export const ProductsItem: React.FC<Product> = ({ id, title, thumbnail, descript
             '&:active': {
               backgroundColor: 'rgba(0, 0, 0, 0.12)', // Cambia el color de fondo al hacer click
             },
-            cursor: 'pointer', // Cambia el cursor al pasar sobre el área
+            cursor: 'pointer', /// Cambia el cursor al pasar sobre el área
           }}
+          
 
         >
           <CardActions onClick={(event) => hadleClick(event)} >

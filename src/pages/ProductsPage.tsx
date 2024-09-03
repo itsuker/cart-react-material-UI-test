@@ -15,7 +15,6 @@ export const ProductsPage = () => {
   const { filteredProducts} = useFilter();
   return (
     <>
-    
       <Typography variant="h2" align="center">Products</Typography>
       <Cart/>
       <main  >
