@@ -7,11 +7,13 @@ export interface FilterContextProps {
     setFilters: React.Dispatch<React.SetStateAction<Filters>>; //esto un metodo para que pueda recibir varios elementos 
 } 
 
-//este es el que tenemos que consumir
-export const FiltersContext = createContext({} as FilterContextProps  )
 interface FilterProviderProps {
     children: React.ReactNode | React.ReactNode[]; //esto es para que pueda recibir varios elementos
     }
+
+//este es el que tenemos que consumir
+export const FiltersContext = createContext({} as FilterContextProps  )
+
 
 const initialValue:Filters  = {
     category: 'all',

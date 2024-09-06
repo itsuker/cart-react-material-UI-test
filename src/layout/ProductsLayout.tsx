@@ -8,14 +8,14 @@ interface ProductsLayoutProps {
 
 export const ProductsLayout = ({children}:ProductsLayoutProps) => {
   return (
-    <Box sx={{ width: '100%', padding: 1 }}>
+    <Box sx={{ width: 'auto', padding: 1 }}>
      
       <Grid container spacing={2}>
-        <Grid item xs={12} md={3} lg={2}>
+        <Grid item xs={12} md={3} lg={1}>
           
         </Grid>
         <Grid item xs={12} md={6} lg={
-          8
+          10
         }>
           <Box sx={{ padding: 2 }}>
             {children}

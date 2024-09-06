@@ -2,7 +2,8 @@ import React from "react"
 import { Product, ProductosJSON } from '../interfaces/productos';
 import { ProductsItem } from "./ProductsItem";
 import { List } from "@mui/material";
-import { useProducts } from "../styles/hooks/useProducts";
+import { useProducts } from "../styles";
+
 interface ProductsProps {
   products:ProductosJSON
 }

@@ -1,20 +1,38 @@
-import { AddShoppingCart } from "@mui/icons-material"
-import { Drawer, IconButton, List, Paper } from "@mui/material"
+import { AddShoppingCart, RemoveShoppingCart } from "@mui/icons-material"
+import { Box, Divider, Drawer, IconButton, List, Paper } from "@mui/material"
 import { useState } from "react"
 import { CartItem } from "./CartItem"
-import { useCart } from "../styles"
-
+import { useCart as useCartStyles } from "../styles"
+import { useCart } from "../hooks/useCart"
+import { Product } from "../interfaces/productos"
 
 
 export const Cart = () => {
   const [open, setopen] = useState(false)
-  const { cartPaper, cartIconButton } = useCart();
+  const { cartPaper, cartIconButton } = useCartStyles();
+  const { cart , addToCart , restToCart ,clearCart } = useCart();
+  
   const towgglerDrawer = (isOpen: boolean) => () => {
 
     setTimeout(() => {
       setopen(isOpen)
     }, 700)
   }
+/*
+  const cartExist = () =>{
+    if(!cart){
+      return false;
+    }else{
+      return true;
+    }
+  }
+  const isCartExist = cartExist();*/
+
+  
+ 
+
+  //const isProductInToCart = cheCkingProduct;
+
   const drawerList = (
 
     <Paper
@@ -22,14 +40,48 @@ export const Cart = () => {
       role="presentation"
       onMouseLeave={towgglerDrawer(false)}   >
       <List>
-        <CartItem />
+        {
+          cart?.map((item) => (
+            <CartItem
+            
+            key={item.product.id} item={item.product} quantity={item.quantity}
+             addTocart = { () => addToCart(item.product) }
+              restToCart = { () => restToCart(item.product) }
+              clearCart = { () => clearCart()}
+            />
+
+          ))
+        }
+        {/**<CartItem /> */}
       </List>
+     {
+      cart!.length > 0 &&(
+        <Divider 
+       
+        sx={{
+          borderColor: 'white',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          width: '80%',
+          
+        }}
+        
+        >
+         
+
+        </Divider>
+        
+      )
+     }
+     
+    
+      
     </Paper>
   )
   return (
     <div>
       <IconButton color="primary"
-        size="large" title='Add to cart"'
+        size="large" title="Add to cart"
         onMouseEnter={towgglerDrawer(true)}
         sx={cartIconButton}>
         <AddShoppingCart fontSize="large" />
