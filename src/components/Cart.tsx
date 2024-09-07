@@ -1,5 +1,5 @@
 import { AddShoppingCart, RemoveShoppingCart } from "@mui/icons-material"
-import { Box, Divider, Drawer, IconButton, List, Paper } from "@mui/material"
+import { Box, ButtonBase, Card, Divider, Drawer, IconButton, List, Paper, Stack } from "@mui/material"
 import { useState } from "react"
 import { CartItem } from "./CartItem"
 import { useCart as useCartStyles } from "../styles"
@@ -56,23 +56,35 @@ export const Cart = () => {
       </List>
      {
       cart!.length > 0 &&(
-        <Divider 
+        <Stack>
+          <Divider 
        
-        sx={{
-          borderColor: 'white',
-          borderWidth: '1px',
-          borderStyle: 'solid',
-          width: '80%',
-          
-        }}
-        
-        >
+       sx={{
+         borderColor: 'white',
+         borderWidth: '1px',
+         borderStyle: 'solid',
+         width: '80%',
          
+       }}
+       
+       >
+        
 
-        </Divider>
+       </Divider>
+       <Card>
+       <ButtonBase color="primary"    title="clear cart" onClick={  clearCart} >
+            <RemoveShoppingCart  fontSize="small" style={{
+              color: 'white'
+            }}   />
+          </ButtonBase>
+     </Card>
+        </Stack>
+        
+        
         
       )
      }
+     
      
     
       
