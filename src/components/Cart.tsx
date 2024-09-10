@@ -1,37 +1,31 @@
-import { AddShoppingCart, RemoveShoppingCart } from "@mui/icons-material"
-import { Box, ButtonBase, Card, Divider, Drawer, IconButton, List, Paper, Stack } from "@mui/material"
+import {  RemoveShoppingCart, ShoppingCart } from "@mui/icons-material"
+import { Badge,  ButtonBase, Card, Divider, Drawer,  IconButton, List, Paper, Stack, useTheme } from "@mui/material"
 import { useState } from "react"
 import { CartItem } from "./CartItem"
 import { useCart as useCartStyles } from "../styles"
 import { useCart } from "../hooks/useCart"
-import { Product } from "../interfaces/productos"
+
+//import { Product } from "../interfaces/productos"
 
 
 export const Cart = () => {
   const [open, setopen] = useState(false)
-  const { cartPaper, cartIconButton } = useCartStyles();
+  const { cartPaper, cartIconButton  , card ,cardButtons ,cardStack } = useCartStyles();
   const { cart , addToCart , restToCart ,clearCart } = useCart();
-  
+  const theme = useTheme();
   const towgglerDrawer = (isOpen: boolean) => () => {
 
     setTimeout(() => {
       setopen(isOpen)
-    }, 700)
+    }, 500)
   }
-/*
+
   const cartExist = () =>{
-    if(!cart){
-      return false;
-    }else{
-      return true;
-    }
+       return cart!.length > 0;
   }
-  const isCartExist = cartExist();*/
+  const isCartExist = cartExist();
 
-  
- 
 
-  //const isProductInToCart = cheCkingProduct;
 
   const drawerList = (
 
@@ -56,9 +50,9 @@ export const Cart = () => {
       </List>
      {
       cart!.length > 0 &&(
-        <Stack>
-          <Divider 
+
        
+          <Divider 
        sx={{
          borderColor: 'white',
          borderWidth: '1px',
@@ -66,25 +60,33 @@ export const Cart = () => {
          width: '80%',
          
        }}
-       
        >
-        
-
        </Divider>
-       <Card>
-       <ButtonBase color="primary"    title="clear cart" onClick={  clearCart} >
-            <RemoveShoppingCart  fontSize="small" style={{
-              color: 'white'
-            }}   />
-          </ButtonBase>
-     </Card>
-        </Stack>
+      
+      
+     
         
         
         
       )
      }
-     
+      <Card sx={card} style={ {
+        margin:  (!isCartExist) ? 'auto 0' : '10px',
+        backgroundColor:  (!isCartExist) ?  
+        theme.palette.secondary.main : 'rgb(15,18,20,01)'
+      }
+      } >
+        <Stack sx={cardStack}>
+       <ButtonBase color="primary"    title="clear cart"
+       disabled={!isCartExist}
+        onClick={  clearCart} 
+        sx={cardButtons} >
+            <RemoveShoppingCart  fontSize="large" style={{
+              color: 'white'
+            }}   />
+          </ButtonBase>
+          </Stack>
+     </Card>
      
     
       
@@ -96,7 +98,12 @@ export const Cart = () => {
         size="large" title="Add to cart"
         onMouseEnter={towgglerDrawer(true)}
         sx={cartIconButton}>
-        <AddShoppingCart fontSize="large" />
+          <Badge badgeContent={cart?.length} color="error"
+          //"animate__animated animate__bounce animate__infinite animate__slow
+          className="animate__animated animate__wobble"
+          >
+        <ShoppingCart fontSize="large" />
+        </Badge>
 
       </IconButton>
       <Drawer anchor="right" open={open} onClose={towgglerDrawer(false)}

@@ -14,9 +14,10 @@ let cartPaper : SxProps<Theme> = {
   }
 
   let cartIconButton : SxProps<Theme> = {
+    
     color: 'white',
     position: 'fixed',
-    top: { xs: 15, sm: 15, md: 50, lg: 50 },
+    top: { xs: 'calc(50% - 25px)', sm: 'calc(50% - 25px)', md: 50, lg: 50 },
     right: { xs: 15, sm: 15, md: 50, lg: 50 },
     zIndex: 1000,
     borderRadius: '25px',
@@ -29,10 +30,47 @@ let cartPaper : SxProps<Theme> = {
     }
   }
 
+  let card:SxProps<Theme> = {
+    width: 'auto',
+   // height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-center',
+    flexWrap: 'wrap',
+   // margin: '12px',
+    padding: '10px',
+   // backgroundColor: 'primary.main',
+    
+}
+
+let cardButtons:SxProps<Theme> = {
+    display:'block',
+    width: '100%',
+    borderRadius: '5px',
+    //backgroundColor: 'rgb(15,18,20,01)',
+    '&:hover': {
+        backgroundColor: 'rgb(255, 255, 255, 0.1)',
+    },
+    '&:active': {
+        backgroundColor: 'rgb(15,18,20,0.7)',
+    },
+    cursor: 'pointer',
+
+}
+let cardStack:SxProps<Theme> = {  
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',  
+}
+ 
 export const useCart = () => {
   return {
     cartPaper,
-    cartIconButton
-
+    cartIconButton,
+    card,
+    cardButtons,
+    cardStack
   }
 }
