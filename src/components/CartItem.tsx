@@ -1,4 +1,4 @@
-import { ButtonBase, Card, CardActionArea, CardMedia, IconButton, ListItem, Stack, Typography } from "@mui/material"
+import { ButtonBase, Card, CardActionArea, CardMedia,  ListItem, Stack, Typography } from "@mui/material"
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useCartItem } from "../styles";
@@ -16,7 +16,7 @@ import { Product } from "../interfaces/productos";
 
 
 export const CartItem = ( {item, quantity ,addTocart , restToCart}:CartItemProps) => {
-    const {  title, thumbnail, description, price   } = item;
+    const {  title, thumbnail,  price   } = item;
     const { card, cardButtons, cardStack } = useCartItem();
     // console.log(item);
 

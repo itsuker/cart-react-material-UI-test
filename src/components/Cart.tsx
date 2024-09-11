@@ -1,15 +1,17 @@
 import {  RemoveShoppingCart, ShoppingCart } from "@mui/icons-material"
 import { Badge,  ButtonBase, Card, Divider, Drawer,  IconButton, List, Paper, Stack, useTheme } from "@mui/material"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { CartItem } from "./CartItem"
 import { useCart as useCartStyles } from "../styles"
 import { useCart } from "../hooks/useCart"
+import classNames from "classnames"
 
 //import { Product } from "../interfaces/productos"
 
 
 export const Cart = () => {
-  const [open, setopen] = useState(false)
+  const [open, setopen] = useState(false);
+  const [animated, setanimated] = useState(false);
   const { cartPaper, cartIconButton  , card ,cardButtons ,cardStack } = useCartStyles();
   const { cart , addToCart , restToCart ,clearCart } = useCart();
   const theme = useTheme();
@@ -24,6 +26,14 @@ export const Cart = () => {
        return cart!.length > 0;
   }
   const isCartExist = cartExist();
+
+  useEffect(() =>{
+    if(cart!.length > 0){
+      setanimated(true);
+      const timer = setTimeout(() => setanimated(false), 1000);
+      return () => clearTimeout(timer);
+    }
+  },[cart?.length]);
 
 
 
@@ -100,7 +110,9 @@ export const Cart = () => {
         sx={cartIconButton}>
           <Badge badgeContent={cart?.length} color="error"
           //"animate__animated animate__bounce animate__infinite animate__slow
-          className="animate__animated animate__wobble"
+          className={classNames({
+            'animate__animated animate__wobble' : animated
+          })}
           >
         <ShoppingCart fontSize="large" />
         </Badge>
