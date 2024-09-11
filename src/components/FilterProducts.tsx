@@ -11,7 +11,7 @@ export const FilterProducts = () => {
   const [minprice, setMinprice] = useState(0); //esto para que aparezca el precio seleccionado
   const [category, setCategory] = useState(""); //esto para que apareza la categoria seleccionada
   const minPriceFilterId = useId()
-  const { stack ,slider } = useFilterProducts();
+  const { stack  } = useFilterProducts();
   //console.log(minPriceFilterId)
 
   const hadleChangeMinPrice = (event: Event, newValue: number | number[]) => {

@@ -66,26 +66,6 @@ export const CartItem = ( {item, quantity ,addTocart , restToCart}:CartItemProps
                 <Typography variant="body1" color="text.primary" textAlign='center'>
                       Price:${Total}
                     </Typography>
-
-                {/*<Stack sx={cardStack}>
-                    <ButtonBase sx={cardButtons}   >
-                        <IconButton color="primary" size="small">
-                            <RemoveIcon fontSize="small" style={{
-                                color: 'white'
-                            }} />
-                        </IconButton>
-                    </ButtonBase>
-                    <Typography variant="h6" color="text.primary" textAlign='center'>
-                        1
-                    </Typography>
-                    <ButtonBase sx={cardButtons}>
-                        <IconButton color="primary" size="small">
-                            <AddIcon fontSize="small" style={{
-                                color: 'white'
-                            }} />
-                        </IconButton>
-                    </ButtonBase>
-                </Stack> */}
                 
             </Card>
         </ListItem>

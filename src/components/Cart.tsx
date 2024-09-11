@@ -1,4 +1,5 @@
 import {  RemoveShoppingCart, ShoppingCart } from "@mui/icons-material"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Badge,  ButtonBase, Card, Divider, Drawer,  IconButton, List, Paper, Stack, useTheme } from "@mui/material"
 import { useEffect, useState } from "react"
 import { CartItem } from "./CartItem"
@@ -33,6 +34,7 @@ export const Cart = () => {
       const timer = setTimeout(() => setanimated(false), 1000);
       return () => clearTimeout(timer);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[cart?.length]);
 
 
@@ -58,7 +60,7 @@ export const Cart = () => {
         }
         {/**<CartItem /> */}
       </List>
-     {
+     {/*
       cart!.length > 0 &&(
 
        
@@ -79,9 +81,9 @@ export const Cart = () => {
         
         
       )
-     }
+    */ }
       <Card sx={card} style={ {
-        margin:  (!isCartExist) ? 'auto 0' : '10px',
+        margin:  (!isCartExist) ? 'auto 0' : '-5px',
         backgroundColor:  (!isCartExist) ?  
         theme.palette.secondary.main : 'rgb(15,18,20,01)'
       }
