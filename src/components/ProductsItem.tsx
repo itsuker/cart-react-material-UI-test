@@ -15,11 +15,11 @@ export const ProductsItem: React.FC<Product> = ( product ) => {
   const {cart , addToCart ,removeCart} = useCart();
  // console.log(cart);
 
-    const cheProductExist = (product:Product) =>{
-        return cart?.some((item) => item.product.id === product.id);
+    const cheProductExist = (product:Product) =>{ // si el producto esta en el carrito
+        return cart?.some((item) => item.product.id === product.id); // si el producto esta en el carrito que regrese true o false
     }
    // console.log(cheProductExist(product));
-    const isProductInCart = cheProductExist(product);
+    const isProductInCart = cheProductExist(product); 
 
 
     /*

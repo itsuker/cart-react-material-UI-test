@@ -11,6 +11,8 @@ let cartPaper : SxProps<Theme> = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+   
+  
   }
 
   let cartIconButton : SxProps<Theme> = {

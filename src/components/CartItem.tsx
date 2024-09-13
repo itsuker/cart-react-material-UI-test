@@ -3,6 +3,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useCartItem } from "../styles";
 import { Product } from "../interfaces/productos";
+import React from "react";
 
 
     interface CartItemProps {
@@ -12,10 +13,11 @@ import { Product } from "../interfaces/productos";
         addTocart: () => void
         restToCart: () => void
         clearCart: () => void
+        refButtonRemove:React.RefObject<HTMLButtonElement>
     }
 
 
-export const CartItem = ( {item, quantity ,addTocart , restToCart}:CartItemProps) => {
+export const CartItem = ( {item, quantity ,addTocart , restToCart ,refButtonRemove}:CartItemProps) => {
     const {  title, thumbnail,  price   } = item;
     const { card, cardButtons, cardStack } = useCartItem();
     // console.log(item);
@@ -39,7 +41,8 @@ export const CartItem = ( {item, quantity ,addTocart , restToCart}:CartItemProps
                 </CardActionArea>
                 <Stack sx={cardStack}>
                 <ButtonBase 
-              onClick={ restToCart }
+                ref={refButtonRemove}
+                onClick={ restToCart }
                 sx={cardButtons}     >
                     
                             <RemoveIcon fontSize="small" style={{
