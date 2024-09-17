@@ -54,20 +54,24 @@ export const ProductsItem: React.FC<Product> = ( product ) => {
 
         <ButtonBase
           component="div"
+          style={{
+           opacity:( isProductInCart) ? 0.8 : 1 ,
+           boxShadow:( isProductInCart) ? '-1px 1px 0px 1px rgba(255, 255, 255, 0.5)' : 'none' ,
+           
+          }}
           sx={cardButtons}>
           <CardActions onClick={() =>  isProductInCart ? 
           removeCart(product) : addToCart(product)
            } >
             <Stack sx={cardStack}>
-              <IconButton color="primary" size="large" title='Add to cart"'  >
+              <IconButton color="primary" size="large" title='Add to cart"' >
+              
                 {
                   isProductInCart ? <RemoveShoppingCart fontSize="large" style={{ color: 'white' }} /> : <AddShoppingCart fontSize="large" style={{
                     color: 'white',
                   }}
                   />
                 }
-               
-               
               </IconButton>
             </Stack>
           </CardActions>
