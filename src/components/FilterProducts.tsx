@@ -1,5 +1,5 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Slider, Stack, Typography } from '@mui/material'
-import React, { ReactNode, useId, useState } from 'react'
+import { Box, FormControl, InputLabel, MenuItem, Select,  Slider, Stack, Typography } from '@mui/material'
+import React, {  useId} from 'react'
 import { useFilter } from '../hooks/useFilter';
 import { useFilterProducts } from '../styles';
 
@@ -7,35 +7,11 @@ import { useFilterProducts } from '../styles';
 
 
 export const FilterProducts = () => {
-  const { setFilters } = useFilter();
-  const [minprice, setMinprice] = useState(0); //esto para que aparezca el precio seleccionado
-  const [category, setCategory] = useState(""); //esto para que apareza la categoria seleccionada
+  const { minprice,category,hadleChangeMinPrice,hadleChangeCategory } = useFilter();
   const minPriceFilterId = useId()
   const { stack  } = useFilterProducts();
   //console.log(minPriceFilterId)
 
-  const hadleChangeMinPrice = (event: Event, newValue: number | number[]) => {
-
-    setMinprice(newValue as number);
-    setFilters(
-      {
-        category: category,
-        minPrice: newValue as number,
-      }
-    )
-  }
-
-  const hadleChangeCategory = (event: SelectChangeEvent<string>, child: ReactNode) => {
-    const category = event.target.value;
-    setCategory(category);
-    setFilters(
-      {
-        category: category,
-        minPrice: minprice,
-
-      }
-    )
-  }
   return (
     <>{/** */}
       <Stack sx={stack} spacing={2} >

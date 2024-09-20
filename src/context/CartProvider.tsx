@@ -1,39 +1,15 @@
 import React, { createContext, useState } from 'react'
 import { Product } from '../interfaces/productos';
-
-
-export interface Cart {
-    product: Product;
-    quantity: number;
-
-}
-
-
-
-
-export interface CartContextProps {
-    cart?: Cart[];
-    setCart:React.Dispatch<React.SetStateAction<any[]>>;
-    addToCart: (product:Product) => void;
-    restToCart: (product:Product) => void;
-    removeCart: (product:Product) => void;
-    clearCart: () => void;
-}
-
- interface CartProviderProps {
-    children: React.ReactNode | React.ReactNode[];
-}
+import { Cart, CartContextProps, CartProviderProps } from '../interfaces/CartProviderProps';
 
 export const CartContext = createContext({} as CartContextProps);
 
 
-
-
-export const CartProvider = ({ children }: CartProviderProps) => {
+export const CartProvider = ({ children }:CartProviderProps) => {
     //const [cart, setCart] = useState<>([]);
     const [cart, setCart] = useState<Cart[]>([]);
 
-    const addTocart = (product: Product) => {
+    const addTocart =   (product: Product) => {
         /*
         const newProduct = {product, quantity: 1};
         setCart([...cart, newProduct]);*/

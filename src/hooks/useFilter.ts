@@ -1,4 +1,5 @@
-import  { useContext} from 'react'
+import  { ReactNode, useContext, useState} from 'react'
+import { SelectChangeEvent } from '@mui/material'
 import { ProductosJSON } from '../interfaces/productos';
 import products from '../mocks/products.json';
 //import { Filters } from '../interfaces/FilterProps';
@@ -16,6 +17,8 @@ export const useFilter = () => {
 
    // const [filters, setfilters] = useState(initialValue);
  const {filters ,setFilters} = useContext(FiltersContext);
+ const [minprice, setMinprice] = useState(0); //esto para que aparezca el precio seleccionado
+ const [category, setCategory] = useState(""); //esto para que apareza la categoria seleccionada
 
  const filterProducts = ({products}:ProductosJSON):ProductosJSON => {
 
@@ -32,11 +35,39 @@ export const useFilter = () => {
         })
       }
  }
+
+ const hadleChangeMinPrice = (event: Event, newValue: number | number[]) => {
+
+  setMinprice(newValue as number);
+  setFilters(
+    {
+      category: category,
+      minPrice: newValue as number,
+    }
+  )
+}
+
+const hadleChangeCategory = (event: SelectChangeEvent<string>, child: ReactNode) => {
+  const category = event.target.value;
+  setCategory(category);
+  setFilters(
+    {
+      category: category,
+      minPrice: minprice,
+
+    }
+  )
+}
  const filteredProducts = filterProducts(products);
   return {
     filters,
-    setFilters,
-    filteredProducts
-
+    minprice,
+    category,
+    filteredProducts, //esto es para que se filtre los productos para generar la lista de productos
+    hadleChangeMinPrice,
+    hadleChangeCategory,
+    filterProducts,
+    
+   
   }
 }

@@ -1,45 +1,25 @@
-import React, { useEffect, useRef, useState } from "react"
+import React from "react"
 import {  RemoveShoppingCart, ShoppingCart } from "@mui/icons-material"
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Badge,  ButtonBase, Card, Divider, Drawer,  IconButton, List, Paper, Stack, useTheme } from "@mui/material"
 import { CartItem } from "./CartItem"
-import { useCart as useCartStyles } from "../styles"
+import { useCart as useCartStyles } from "../styles"  //este no es lo mismo ,ya que son estilos de cart
 import { useCart } from "../hooks/useCart"
 import classNames from "classnames"
 import { TransitionGroup, CSSTransition } from "react-transition-group"
+import { useCartContex } from "../hooks/useCartContex"
 
 
 //import { Product } from "../interfaces/productos"
 
 
 export const Cart = () => {
-  const [open, setopen] = useState(false);
-  const [animated, setanimated] = useState(false);
+  //const [animated, setanimated] = useState(false);
   const { cartPaper, cartIconButton, card, cardButtons, cardStack } = useCartStyles();
-  const { cart, addToCart, restToCart, clearCart } = useCart();
+  const { cart,addToCart,restToCart,clearCart } = useCartContex();
+  const { open ,isCartExist,animated,refs,towgglerDrawer } = useCart();
   const theme = useTheme();
-  const towgglerDrawer = (isOpen: boolean) => () => {
-
-    setTimeout(() => {
-      setopen(isOpen)
-    }, 500)
-  }
-
-  const cartExist = () => {
-    return cart!.length > 0;
-  }
-  const isCartExist = cartExist();
-
-  useEffect(() => {
-    if (cart!.length > 0) {
-      setanimated(true);
-      const timer = setTimeout(() => setanimated(false), 1000);
-      return () => clearTimeout(timer);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cart?.length]);
-
-  const refs = useRef(new Map());
+ 
 
   const drawerList = (
 

@@ -2,19 +2,10 @@ import { ButtonBase, Card, CardActionArea, CardMedia,  ListItem, Stack, Typograp
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useCartItem } from "../styles";
-import { Product } from "../interfaces/productos";
 import React from "react";
+import { CartItemProps } from "../interfaces/cartItem";
 
 
-    interface CartItemProps {
-        item:Product,
-        quantity:number
-        key:number
-        addTocart: () => void
-        restToCart: () => void
-        clearCart: () => void
-        refButtonRemove:React.RefObject<HTMLButtonElement>
-    }
 
 
 export const CartItem = ( {item, quantity ,addTocart , restToCart ,refButtonRemove}:CartItemProps) => {

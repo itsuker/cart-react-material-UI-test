@@ -13,7 +13,7 @@ import { CartProvider } from '../context/CartProvider';
 
 
 export const ProductsPage = () => {
-  const { filteredProducts} = useFilter();
+  const { filteredProducts} = useFilter(); //esto es para que se filtre los productos
   return (
     <>
       <Typography variant="h2" align="center">Products</Typography>

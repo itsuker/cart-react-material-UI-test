@@ -1,18 +1,20 @@
 import { AddShoppingCart, RemoveShoppingCart } from '@mui/icons-material'
 import { ButtonBase, Card, CardActionArea, CardActions, CardContent, CardMedia, IconButton, ListItem, Stack, Typography } from '@mui/material'
 import React from 'react'
-import { Product } from '../interfaces/productos'
-import { useProductsItem } from '../styles'
-import { useCart } from '../hooks/useCart'
+import { Product } from '../interfaces/productos'  // importamos la interfaz
+import { useProductsItem as useProductsItemStyle } from '../styles' // importamos los estilos
+import { useCartContex } from '../hooks/useCartContex'// importacion del contexto de carrito global
 
   //{ id, title, thumbnail, description, price }
 
-export const ProductsItem: React.FC<Product> = ( product ) => {
-  const { id, title, thumbnail, description, price } = product;
+export const ProductsItem: React.FC<Product> =  React.memo(( product )   => {
+  const { id, title, thumbnail, description, price } = product; // destructuring
 
-  const { card, cardButtons, cardStack,
-    cardPrice, cardTitle, cardDescription } = useProductsItem();
-  const {cart , addToCart ,removeCart} = useCart();
+  
+
+  const { card, cardButtons, cardStack, 
+    cardPrice, cardTitle, cardDescription } = useProductsItemStyle();  //estilos
+  const {cart , addToCart ,removeCart} = useCartContex(); // 
  // console.log(cart);
 
     const cheProductExist = (product:Product) =>{ // si el producto esta en el carrito
@@ -79,4 +81,4 @@ export const ProductsItem: React.FC<Product> = ( product ) => {
       </Card>
     </ListItem>
   )
-}
+} )

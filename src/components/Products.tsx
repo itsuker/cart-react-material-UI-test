@@ -14,13 +14,15 @@ export const Products:React.FC<ProductsProps> = ({products } ) => {
   return (
     <>
       <List sx={Li}>
-        {
+        {//slice es para que solo muestre 6 productos
           productList.slice(0,6).map((product:Product ,index) => (
             <ProductsItem key={product.id} {...product} 
           
             />
           ))
         }
+
+        
       </List>
     </>
   )
