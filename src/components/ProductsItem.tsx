@@ -4,16 +4,17 @@ import React from 'react'
 import { Product } from '../interfaces/productos'  // importamos la interfaz
 import { useProductsItem as useProductsItemStyle } from '../styles' // importamos los estilos
 import { useCartContex } from '../hooks/useCartContex'// importacion del contexto de carrito global
+import { InView, useInView } from 'react-intersection-observer'
 
   //{ id, title, thumbnail, description, price }
-
+                          //React.Fc<Product> es una funcion de react que recibe un producto y regresa un componente
 export const ProductsItem: React.FC<Product> =  React.memo(( product )   => {
   const { id, title, thumbnail, description, price } = product; // destructuring
 
   
 
   const { card, cardButtons, cardStack, 
-    cardPrice, cardTitle, cardDescription } = useProductsItemStyle();  //estilos
+  cardPrice, cardTitle, cardDescription } = useProductsItemStyle();  //estilos
   const {cart , addToCart ,removeCart} = useCartContex(); // 
  // console.log(cart);
 
@@ -23,6 +24,10 @@ export const ProductsItem: React.FC<Product> =  React.memo(( product )   => {
    // console.log(cheProductExist(product));
     const isProductInCart = cheProductExist(product); 
 
+      const { ref ,inView} =  useInView({
+        triggerOnce: false, //Solo se activa una vez
+        threshold: 0.2, //El porcentaje de visibilidad que debe tener el elemento para que se active
+      })
 
     /*
   const hadleClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -31,7 +36,15 @@ export const ProductsItem: React.FC<Product> =  React.memo(( product )   => {
   return (
     <ListItem
       key={id} sx={{ marginY: 2, }}   >
-      <Card sx={card} className='animate__animated animate__fadeIn animate__faster' >
+      <Card
+      ref={ref} 
+      sx={{
+        ...card,
+        opacity:inView ? 1 : 0,
+        transition:'opacity 0.5s ease-in-out',
+      }} 
+      
+      >
         <CardActionArea sx={{ flex: 1 }}>
           <CardMedia
             component="img"
