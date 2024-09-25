@@ -1,7 +1,7 @@
 import { ButtonBase, Card, CardActionArea, CardMedia,  ListItem, Stack, Typography } from "@mui/material"
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { useCartItem } from "../styles";
+import { useCartItem as useCartItemStyles } from "../styles";
 import React from "react";
 import { CartItemProps } from "../interfaces/cartItem";
 
@@ -10,8 +10,9 @@ import { CartItemProps } from "../interfaces/cartItem";
 
 export const CartItem = ( {item, quantity ,addTocart , restToCart ,refButtonRemove}:CartItemProps) => {
     const {  title, thumbnail,  price   } = item;
-    const { card, cardButtons, cardStack } = useCartItem();
+    const { card, cardButtons, cardStack } = useCartItemStyles();
     // console.log(item);
+    
 
 
 

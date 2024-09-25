@@ -10,6 +10,10 @@ export const FilterProducts = () => {
   const { minprice,category,hadleChangeMinPrice,hadleChangeCategory } = useFilter();
   const minPriceFilterId = useId()
   const { stack  } = useFilterProducts();
+
+  
+  
+
   //console.log(minPriceFilterId)
 
   return (
