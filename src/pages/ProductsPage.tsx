@@ -5,9 +5,10 @@ import { Products } from '../components/Products';
 import { Header } from './Header'
 import { ProductsLayout } from '../layout/ProductsLayout'
 import { useFilter } from '../hooks/useFilter';
-import { Footer } from './Footer';
+//import { Footer } from './Footer';
 import { Cart } from '../components/Cart';
 import { CartProvider } from '../context/CartProvider';
+
 
 
 
@@ -20,7 +21,7 @@ export const ProductsPage = () => {
      
       <main  >
         <ProductsLayout>
-          <CartProvider>
+          <CartProvider >
           <Cart/>
           <Header    />
           <Products products={filteredProducts} />

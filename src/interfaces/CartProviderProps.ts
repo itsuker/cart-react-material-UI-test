@@ -11,7 +11,7 @@ export interface Cart {
 
 export interface CartContextProps {
     cart?: Cart[];
-    setCart:React.Dispatch<React.SetStateAction<any[]>>;
+   // setCart:React.Dispatch<React.SetStateAction<any[]>>;
     addToCart: (product:Product) => void;
     restToCart: (product:Product) => void;
     removeCart: (product:Product) => void;
