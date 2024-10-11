@@ -4,6 +4,9 @@ import { ProductosJSON } from '../interfaces/productos';
 import products from '../mocks/products.json';
 //import { Filters } from '../interfaces/FilterProps';
 import { FiltersContext } from '../context/FilterProvider';
+import { AppDispatch, RootState } from '../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { onChangeCategory } from '../store';
 
 
 /*
@@ -18,7 +21,10 @@ export const useFilter = () => {
    // const [filters, setfilters] = useState(initialValue);
  const {filters ,setFilters} = useContext(FiltersContext);
  const [minprice, setMinprice] = useState(0); //esto para que aparezca el precio seleccionado
- const [category, setCategory] = useState(""); //esto para que apareza la categoria seleccionada
+const [category, setCategory] = useState(""); //esto para que apareza la categoria seleccionada
+//const dispatch:AppDispatch = useDispatch();
+//const {category} = useSelector((state:RootState) => state.filters);
+
 
  const filterProducts = ({products}:ProductosJSON):ProductosJSON => {
 
@@ -49,7 +55,10 @@ export const useFilter = () => {
 
 const hadleChangeCategory = (event: SelectChangeEvent<string>, child: ReactNode) => {
   const category = event.target.value;
-  setCategory(category);
+ //dispatch( onChangeCategory(category));
+  
+   setCategory(category);
+
   setFilters(
     {
       category: category,

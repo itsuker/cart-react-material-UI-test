@@ -1,5 +1,7 @@
 import React, {createContext, useState} from 'react'
 import { Filters } from '../interfaces/FilterProps';
+import { Provider } from 'react-redux';
+import { store } from '../store/store';
 
 
 export interface FilterContextProps {
@@ -23,10 +25,29 @@ const initialValue:Filters  = {
 
 
 export const FilterProvider = ({children}:FilterProviderProps) => {
+
+  return(
+    <Provider store={store}>
+        <FilterProviderContent>
+            {children}
+        </FilterProviderContent>
+    </Provider>
+  )
+
+    /*
  const [filters, setFilters] = useState(initialValue);
   return (
     <FiltersContext.Provider value={{filters, setFilters}}>
         {children}
     </FiltersContext.Provider>
-  )
+  )*/
+}
+
+const FilterProviderContent:React.FC<{children:React.ReactNode}> = ({children}) => {   
+    const [filters, setFilters] = useState(initialValue);
+    return (
+        <FiltersContext.Provider value={{filters, setFilters}}>
+            {children}
+        </FiltersContext.Provider>
+    )
 }

@@ -12,7 +12,11 @@ export interface CartStore {
 export const productSlice = createSlice({
     name: 'cart',
     initialState: {
-        cart: [] as CartStore[]
+        cart: [] as CartStore[],
+       /* filters: {
+            category: "",
+            minPrice: 0
+        } as Filters*/
     },
     reducers:{
 
