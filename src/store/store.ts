@@ -1,23 +1,43 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { filterProductsSlice, loadState,  localStorageProducts, productSlice,loadStateFilters,localStorageFilters } from "./index";
+import {  filterProductsSlice, loadState,  loadStateFilters,  localStorageFilters,  localStorageProducts, productSlice } from "./index";
 
 
+/*
+ const preloadedState = {
+    product: {
+        cart: loadState()?.product.cart || [],
+        filters: {
+            category: "",
+            minPrice: 0
+        }
+    } */
 
 
 //const preloadedState = loadState();
+
+/*
  const preloadedState = loadState();
- //const preloadedStateFilters = loadStateFilters();
+ const preloadedStateFilters = loadStateFilters();*/
+const preloadedState = {
+     product : {
+        cart: loadState()?.product.cart || []
+     }/*,
+     filters:loadStateFilters()?.filters || {}*/
+}
+
  
  
 export const store =  configureStore({
     reducer:{
         product: productSlice.reducer,
-        //filters:filterProductsSlice.reducer
+        filters:filterProductsSlice.reducer
     },
     middleware:(getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false
-    }).concat(localStorageProducts),
-    preloadedState,
+    }).concat(localStorageProducts/*, localStorageFilters*/),preloadedState
+  
+    
+   
    
     
    

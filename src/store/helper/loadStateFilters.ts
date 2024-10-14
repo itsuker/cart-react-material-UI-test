@@ -5,7 +5,7 @@ export const loadStateFilters = () => {
         if(serializableState === null){
             return undefined;
         }
-        return JSON.parse(serializableState);
+        return {filters:JSON.parse(serializableState)};
     }
     catch(err){
         return undefined;

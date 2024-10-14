@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Product } from '../../interfaces/productos';
+//import { Filters } from '../../interfaces/FilterProps';
 
 export interface CartStore {
     product: Product;
@@ -13,7 +14,8 @@ export const productSlice = createSlice({
     name: 'cart',
     initialState: {
         cart: [] as CartStore[],
-       /* filters: {
+        /*
+        filters: {
             category: "",
             minPrice: 0
         } as Filters*/
@@ -58,7 +60,10 @@ export const productSlice = createSlice({
         },
         onClearCart:(state) =>{
             return {...state, cart: []};
-        }
+        },
+       /* onChangeCategory:(state, action:PayloadAction<string>) =>{
+            state.filters.category = action.payload;
+        },*/
       
         
     }

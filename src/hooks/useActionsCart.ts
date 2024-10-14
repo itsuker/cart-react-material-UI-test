@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from '../store/store' //Importamos el store y 
 export const useActionsCart = () => {
   const dispatch:AppDispatch = useDispatch()
   const {cart} = useSelector((state:RootState) => state.product)
+
   const addToCart = (product: Product) => { //Funcion para agregar al carrito
     dispatch(onAddToCart(product));
   }

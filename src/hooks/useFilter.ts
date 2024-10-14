@@ -55,7 +55,7 @@ const [category, setCategory] = useState(""); //esto para que apareza la categor
 
 const hadleChangeCategory = (event: SelectChangeEvent<string>, child: ReactNode) => {
   const category = event.target.value;
- //dispatch( onChangeCategory(category));
+// dispatch( onChangeCategory(category));
   
    setCategory(category);
 
